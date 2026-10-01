@@ -1,0 +1,12 @@
+<div class="movie-card">
+    @if (movie()?.posterUrl) {
+        <img class="movie-card__poster" [src]="movie().posterUrl" [alt]="movie().title" />
+    } @else {
+        <img class="movie-card__poster" src="poster-default.svg" [alt]="movie().title" />
+    }
+    <div class="movie-card__body">
+        <div class="movie-card__title">{{ movie().title }}</div>
+        <div class="movie-card__meta">{{ movie().year }} &middot; {{ movie().duration ?? 'NA'}} mn</div>
+    </div>
+</div>
+

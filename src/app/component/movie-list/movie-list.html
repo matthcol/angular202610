@@ -1,0 +1,5 @@
+<div class="movie-grid">
+    @for (movie of movieList; track $index) {
+        <app-movie-card-2 [movie]="movie"/>
+    }
+</div>
