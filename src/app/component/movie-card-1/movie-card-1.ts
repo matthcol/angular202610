@@ -15,3 +15,4 @@ export class MovieCard1 {
     // posterUrl: "https://media.themoviedb.org/t/p/w440_and_h660_face/b2bt3UomRX41rHHZmIsSNmXzidU.jpg"
   }
 }
+// 
