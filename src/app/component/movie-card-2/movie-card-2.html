@@ -1,12 +1,38 @@
-<div class="movie-card">
+@if(displayMode()) {
+    @let durationHour = ((movie().duration ?? 0) - ((movie().duration ?? 0) % 60)) / 60;
+    @let durationMinute = (movie().duration ?? 0) % 60;
+
     @if (movie()?.posterUrl) {
-        <img class="movie-card__poster" [src]="movie().posterUrl" [alt]="movie().title" />
+    <img class="movie-card__poster" [src]="movie().posterUrl" [alt]="movie().title" />
     } @else {
         <img class="movie-card__poster" src="poster-default.svg" [alt]="movie().title" />
     }
     <div class="movie-card__body">
         <div class="movie-card__title">{{ movie().title }}</div>
         <div class="movie-card__meta">{{ movie().year }} &middot; {{ movie().duration ?? 'NA'}} mn</div>
+        <div class="movie-card__meta">{{ 
+                durationHour 
+            }}h{{ 
+                durationMinute < 10 ? '0' + durationMinute : durationMinute
+            }}</div>
     </div>
-</div>
+
+    <div>
+        <button (click)="displayMode.set(false)">Edit</button>
+        <button (click)="handleRemove()">-</button>
+    </div>
+} @else {
+    <div>
+        <input #title type="text" [value]="movie().title">
+        <input #year type="number" [value]="movie().year">
+        <input #duration type="number" [value]="movie().duration">
+        <input #posterUrl type="text" [value]="movie().posterUrl">
+    </div>
+    <div>
+        <button (click)="displayMode.set(true)">Annuler</button>
+        <button (click)="handleSave(title.value, year.value, duration.value, posterUrl.value)">Sauver </button>
+    </div>
+}
+
+
 

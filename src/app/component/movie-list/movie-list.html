@@ -1,5 +1,11 @@
+<h2>Sélection de films</h2>
+<button (click)="addMovie()">+</button>
 <div class="movie-grid">
-    @for (movie of movieList; track $index) {
-        <app-movie-card-2 [movie]="movie"/>
+    @for (movie of movieList(); track movie.id) {
+        <app-movie-card-2 
+                [movie]="movie" 
+                (movieRemoved)="onMovieRemoved(movie.id)" 
+                (movieEdited)="onMovieEdited($event)"
+        />
     }
 </div>
