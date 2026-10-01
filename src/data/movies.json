@@ -1,0 +1,168 @@
+[
+    {
+        "id": "123",
+        "title": "The Hobbit: An Unexpected Journey",
+        "year": 2012,
+        "duration": 169,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/b/b3/The_Hobbit-_An_Unexpected_Journey.jpeg"
+    },
+    {
+        "id": "456",
+        "title": "Cool Runnings",
+        "year": 1993,
+        "duration": 98,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/76/Coolrunnings.jpg"
+    },
+    {
+        "id": "1001",
+        "title": "Sunset Boulevard",
+        "year": 1950,
+        "duration": 110,
+        "posterUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Sunset_Boulevard_%281950_poster%29.jpg/330px-Sunset_Boulevard_%281950_poster%29.jpg"
+    },
+    {
+        "id": "1002",
+        "title": "Singin' in the Rain",
+        "year": 1952,
+        "duration": 103,
+        "posterUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Singin%27_in_the_Rain_%281952_poster%29.jpg/330px-Singin%27_in_the_Rain_%281952_poster%29.jpg"
+    },
+    {
+        "id": "1003",
+        "title": "Psycho",
+        "year": 1960,
+        "duration": 109,
+        "posterUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Psycho_%281960%29_theatrical_poster_%28retouched%29.jpg/330px-Psycho_%281960%29_theatrical_poster_%28retouched%29.jpg"
+    },
+    {
+        "id": "1004",
+        "title": "2001: A Space Odyssey",
+        "year": 1968,
+        "duration": 149,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/11/2001_A_Space_Odyssey_%281968%29.png"
+    },
+    {
+        "id": "1005",
+        "title": "The Godfather",
+        "year": 1972,
+        "duration": 175,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg"
+    },
+    {
+        "id": "1006",
+        "title": "Jaws",
+        "year": 1975,
+        "duration": 124,
+        "posterUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Jaws_movie_poster.jpg/330px-Jaws_movie_poster.jpg"
+    },
+    {
+        "id": "1007",
+        "title": "Star Wars",
+        "year": 1977,
+        "duration": 121,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/8/87/StarWarsMoviePoster1977.jpg"
+    },
+    {
+        "id": "1008",
+        "title": "Back to the Future",
+        "year": 1985,
+        "duration": 116,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/d/d2/Back_to_the_Future.jpg"
+    },
+    {
+        "id": "1009",
+        "title": "Die Hard",
+        "year": 1988,
+        "duration": 132,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/c/ca/Die_Hard_%281988_film%29_poster.jpg"
+    },
+    {
+        "id": "1010",
+        "title": "Terminator 2: Judgment Day",
+        "year": 1991,
+        "duration": 137,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/5e/Terminator_2-Judgment_Day.png"
+    },
+    {
+        "id": "1011",
+        "title": "Pulp Fiction",
+        "year": 1994,
+        "duration": 154,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/3b/Pulp_Fiction_%281994%29_poster.jpg"
+    },
+    {
+        "id": "1012",
+        "title": "Titanic",
+        "year": 1997,
+        "duration": 195,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/18/Titanic_%281997_film%29_poster.png"
+    },
+    {
+        "id": "1013",
+        "title": "The Matrix",
+        "year": 1999,
+        "duration": 136,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/d/db/The_Matrix.png"
+    },
+    {
+        "id": "1014",
+        "title": "The Lord of the Rings: The Fellowship of the Ring",
+        "year": 2001,
+        "duration": 178,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/f/fb/Lord_Rings_Fellowship_Ring.jpg"
+    },
+    {
+        "id": "1015",
+        "title": "The Lord of the Rings: The Return of the King",
+        "year": 2003,
+        "duration": 201,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/48/Lord_Rings_Return_King.jpg"
+    },
+    {
+        "id": "1016",
+        "title": "The Dark Knight",
+        "year": 2008,
+        "duration": 152,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_%282008_film%29.jpg"
+    },
+    {
+        "id": "1017",
+        "title": "Inception",
+        "year": 2010,
+        "duration": 148,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg"
+    },
+    {
+        "id": "1018",
+        "title": "Interstellar",
+        "year": 2014,
+        "duration": 169,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"
+    },
+    {
+        "id": "1019",
+        "title": "Parasite",
+        "year": 2019,
+        "duration": 132,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/53/Parasite_%282019_film%29.png"
+    },
+    {
+        "id": "1020",
+        "title": "Oppenheimer",
+        "year": 2023,
+        "duration": 180,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/4a/Oppenheimer_%28film%29.jpg"
+    },
+    {
+        "id": "1021",
+        "title": "The Odyssey",
+        "year": 2026,
+        "duration": 173,
+        "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/90/The_Odyssey_%282026_film%29_poster.jpg"
+    },
+    {
+        "id": "1022",
+        "title": "Spiderman Brand New Day",
+        "year": 2026
+    }
+]

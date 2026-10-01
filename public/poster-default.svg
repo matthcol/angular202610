@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a3f4b"/>
+      <stop offset="100%" stop-color="#23262e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="600" fill="url(#bg)"/>
+
+  <!-- cadre -->
+  <rect x="16" y="16" width="368" height="568" fill="none" stroke="#565c6b" stroke-width="2" stroke-dasharray="10 8" rx="10"/>
+
+  <!-- icone clap de cinema -->
+  <g transform="translate(120,210)" fill="#8890a0">
+    <rect x="0" y="30" width="160" height="110" rx="6"/>
+    <path d="M0 30 L160 30 L150 0 L18 0 Z"/>
+    <g stroke="#23262e" stroke-width="10">
+      <line x1="20" y1="0" x2="35" y2="30"/>
+      <line x1="55" y1="0" x2="70" y2="30"/>
+      <line x1="90" y1="0" x2="105" y2="30"/>
+      <line x1="125" y1="0" x2="140" y2="30"/>
+    </g>
+  </g>
+
+  <text x="200" y="400" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#c7cbd4">
+    Pas d'affiche
+  </text>
+  <text x="200" y="428" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#8890a0">
+    disponible
+  </text>
+</svg>

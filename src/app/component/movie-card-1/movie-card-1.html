@@ -1,0 +1,7 @@
+<div>
+    @if (movie.posterUrl) {
+        <img [src]="movie.posterUrl" [alt]="movie.title" />
+    }
+    <div>{{ movie.title }}</div>
+    <div>{{ movie.year }} . {{ movie.duration ?? 'NA'}} mn</div>
+</div>
