@@ -1,7 +1,4 @@
 @if(displayMode()) {
-    @let durationHour = ((movie().duration ?? 0) - ((movie().duration ?? 0) % 60)) / 60;
-    @let durationMinute = (movie().duration ?? 0) % 60;
-
     @if (movie()?.posterUrl) {
     <img class="movie-card__poster" [src]="movie().posterUrl" [alt]="movie().title" />
     } @else {
@@ -10,11 +7,6 @@
     <div class="movie-card__body">
         <div class="movie-card__title">{{ movie().title | slice: 0:10 | uppercase }}</div>
         <div class="movie-card__meta">{{ movie().year }} &middot; {{ movie().duration ?? 'NA'}} mn</div>
-        <div class="movie-card__meta">{{ 
-                durationHour 
-            }}h{{ 
-                durationMinute < 10 ? '0' + durationMinute : durationMinute
-            }}</div>
     </div>
 
     <div>

@@ -1,6 +1,5 @@
 import { Component, input, output, signal } from '@angular/core';
 import { Movie } from '../../model/movie';
-import { MovieList } from '../movie-list/movie-list';
 import { SlicePipe, UpperCasePipe } from '@angular/common';
 
 @Component({
@@ -8,12 +7,11 @@ import { SlicePipe, UpperCasePipe } from '@angular/common';
     UpperCasePipe,
     SlicePipe
   ],
-  selector: 'app-movie-card-2',
-  styleUrl: './movie-card-2.css',
-  templateUrl: './movie-card-2.html',
+  selector: 'app-movie-card-detail',
+  styleUrl: './movie-card-detail.css',
+  templateUrl: './movie-card-detail.html',
 })
-export class MovieCard2 {
-
+export class MovieCardDetail {
   displayMode = signal<boolean>(true)
 
   movie = input<Movie>({
@@ -25,10 +23,7 @@ export class MovieCard2 {
   movieRemoved = output<void>()
   movieEdited = output<Movie>()
 
-  constructor() {
-    this.movieRemoved.subscribe(() => console.log("[Movie Card] movieRemoved internal subscription"))
-  }
-
+  
   handleRemove() {
     console.log("[Movie Card] handle click remove movie", this.movie().id)
     this.movieRemoved.emit()
