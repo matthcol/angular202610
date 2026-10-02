@@ -1,0 +1,29 @@
+:host {
+    display: block;
+    background-color: #2f2a3a;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    color: #f1f1f1;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 320px;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid #d32f2f;
+    background-color: #fdecea;
+}
+
+input.ng-valid.ng-touched {
+    border: 1px solid #2e7d32;
+}
+
+.error {
+    color: #ff8a80;
+    font-size: 0.85rem;
+    margin: 0;
+}

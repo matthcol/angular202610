@@ -13,6 +13,26 @@
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
 }
 
+.detail-layout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.75rem;
+}
+
+.detail-layout__info {
+    flex: 1 1 260px;
+    min-width: 240px;
+}
+
+.detail-layout app-movie-form-template,
+.detail-layout app-movie-form-reactive,
+.detail-layout app-movie-form-signal {
+    flex: 1 1 260px;
+    min-width: 240px;
+}
+
 .movie-card__poster {
     width: 100%;
     max-width: 300px;

@@ -1,0 +1,12 @@
+<h3>Movie Form (signal)</h3>
+<form [formRoot]="signalForm">
+    <input [formField]="signalForm.title" placeholder="Title">
+    @for (err of signalForm.title().errors(); track err.kind) {
+        <p class="error">{{ err.message }}</p>
+    }
+    <input [formField]="signalForm.year" type="number" placeholder="Title">
+    @for (err of signalForm.year().errors(); track err.kind) {
+        <p class="error">{{ err.message }}</p>
+    }
+    <button type="submit" [disabled]="signalForm().invalid()">Save</button>
+</form>

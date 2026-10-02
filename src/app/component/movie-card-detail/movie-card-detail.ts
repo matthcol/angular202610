@@ -1,10 +1,13 @@
-import { Component, computed, inject, input, output, signal } from '@angular/core';
+import { Component, computed, inject, input, linkedSignal, output, signal } from '@angular/core';
 import { Movie } from '../../model/movie';
 import { DatePipe, DecimalPipe, JsonPipe, LowerCasePipe, PercentPipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { HourMinutePipePipe } from '../../pipe/hour-minute-pipe-pipe';
 import { DatetimeDmyPipe } from '../../pipe/datetime-dmy-pipe';
 import { RouterLink } from '@angular/router';
 import { MovieMock } from '../../service/movie-mock';
+import { MovieFormTemplate } from '../movie-form-template/movie-form-template';
+import { MovieFormReactive } from '../movie-form-reactive/movie-form-reactive';
+import { MovieFormSignal } from '../movie-form-signal/movie-form-signal';
 
 type HourMinute = {
   hour: number
@@ -30,6 +33,9 @@ const MOVIE_404: Movie = {
     DecimalPipe,
     HourMinutePipePipe,
     DatetimeDmyPipe,
+    MovieFormTemplate,
+    MovieFormReactive,
+    MovieFormSignal
 ],
   selector: 'app-movie-card-detail',
   styleUrl: './movie-card-detail.css',
@@ -42,10 +48,16 @@ export class MovieCardDetail {
 
   // input id provient du routing pas de l'instanciation html
   // settings required dans appConfig: withComponentInputBinding()
+  
   id = input.required<string>()  
 
+  // movie from service (the one displayed)
   movie = computed(() => this.movieService.getMovie(this.id()) ?? MOVIE_404)
-    
+
+  movieDraftTemplate = linkedSignal(() => ({...this.movie()}))  // writable
+  movieDraftReactive = linkedSignal(() => ({...this.movie()}))
+  movieDraftSignal = linkedSignal(() => ({...this.movie()}))
+
   now = new Date()
 
   movieRemoved = output<void>()
@@ -61,7 +73,6 @@ export class MovieCardDetail {
   handleRemove() {
     console.log("[Movie Card] handle click remove movie", this.movie().id)
     this.movieRemoved.emit()
-
   }
 
   handleSave(title: string, year: string, duration: string, posterUrl: string) {

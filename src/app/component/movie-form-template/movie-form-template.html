@@ -1,0 +1,13 @@
+<h3>Movie Form (template)</h3>
+
+<form #tdForm="ngForm" (ngSubmit)="saveMovie(tdForm)">
+    <input name="title" [(ngModel)]="movie().title" required minlength="1" #titleRef="ngModel" />
+    @if (titleRef.invalid) {
+        <p class="error">title required with at leat 1 character</p>
+    }
+    <input name="year" [(ngModel)]="movie().year" required type="number" min="1896" #yearRef="ngModel" />
+    @if (yearRef.invalid) {
+        <p class="error">year required, minimum 1896</p>
+    }
+    <button type="submit" [disabled]="tdForm.invalid">Save</button>
+</form>

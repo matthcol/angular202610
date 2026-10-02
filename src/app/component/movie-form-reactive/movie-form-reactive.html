@@ -1,0 +1,12 @@
+<h3>Movie Form (reactive)</h3>
+<form [formGroup]="reactiveForm()" (ngSubmit)="save()">
+    <input formControlName="title" placeholder="Title" />
+    @if (reactiveForm().controls.title.invalid) {
+        <p class="error">Title required (at least 1 char)</p>
+    }
+    <input formControlName="year" type="number" placeholder="Year" />
+    @if (reactiveForm().controls.year.invalid) {
+        <p class="error">Year required (min 1888)</p>
+    }
+    <button type="submit" [disabled]="reactiveForm().invalid">Save</button>
+</form>

@@ -1,0 +1,3 @@
+State management
+
+automatisation des input et erreurs des formulaires
