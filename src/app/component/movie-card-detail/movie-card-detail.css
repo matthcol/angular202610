@@ -1,0 +1,42 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background-color: #1c1c1c;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+:host(:hover) {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+.movie-card__poster {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.movie-card__body {
+    padding: 0.75rem;
+    color: #f1f1f1;
+}
+
+.movie-card__title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-card__meta {
+    font-size: 0.8rem;
+    color: #a0a0a0;
+}

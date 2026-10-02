@@ -1,4 +1,9 @@
 <h2>Sélection de films</h2>
+<div>|
+    @for (movie of movieList() | slice: 0: 5; track $index){
+        {{ movie.title | slice: 0: 10}} |
+    }
+</div>
 <button (click)="addMovie()">+</button>
 <div class="movie-grid">
     @for (movie of movieList(); track movie.id) {

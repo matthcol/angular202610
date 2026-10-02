@@ -2,9 +2,13 @@ import { Component, signal } from '@angular/core';
 import { Movie } from '../../model/movie';
 import movies from '../../../data/movies.json'
 import { MovieCard2 } from '../movie-card-2/movie-card-2';
+import { SlicePipe } from '@angular/common';
 
 @Component({
-  imports: [MovieCard2],
+  imports: [
+    MovieCard2,
+    SlicePipe
+  ],
   selector: 'app-movie-list',
   styleUrl: './movie-list.css',
   templateUrl: './movie-list.html',

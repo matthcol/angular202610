@@ -5,8 +5,28 @@
         <img class="movie-card__poster" src="poster-default.svg" [alt]="movie().title" />
     }
     <div class="movie-card__body">
+        <div class="movie-card__title">{{ movie().title }}</div>
+        <div class="movie-card__title">{{ movie().title | uppercase }}</div>
+        <div class="movie-card__title">{{ movie().title | lowercase }}</div>
         <div class="movie-card__title">{{ movie().title | slice: 0:10 | uppercase }}</div>
         <div class="movie-card__meta">{{ movie().year }} &middot; {{ movie().duration ?? 'NA'}} mn</div>
+        <div class="movie-card__meta">Duration: {{ movie().duration | hourMinutePipe }}</div>
+        <div class="movie-card__meta">Duration (computed): {{ 
+                hourMinute().hour 
+            }}h{{ 
+                hourMinute().minute | number: '2.0' 
+            }}</div>
+        @if (movie().duration) {
+            @let duration = movie().duration!;
+            @let ratioDay = duration / 60 / 24;
+            <div class="movie-card__meta">Ratio day: {{ ratioDay | number: '1.5'}}</div>
+            <div class="movie-card__meta">Ratio day (fr): {{ ratioDay | number: '1.5' : 'fr'}}</div>
+            <div class="movie-card__meta">Ratio day (percent): {{ ratioDay | percent}}</div>
+            <div class="movie-card__meta">Ratio day: {{ ratioDay | percent: '1.2-2'}}</div>
+            <div class="movie-card__meta">Last updated: {{ now | date: 'dd/MM/yyyy HH:mm' }}</div>
+            <div class="movie-card__meta">Last updated: {{ now | datetimeDmy }}</div>
+            <div class="movie-card__meta">Valid until: {{ '2027-02-28' | date: 'dd/MM/yyyy'}}</div>
+        }
     </div>
 
     <div>
