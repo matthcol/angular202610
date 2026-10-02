@@ -2,12 +2,14 @@ import { Component, input, output, signal } from '@angular/core';
 import { Movie } from '../../model/movie';
 import { MovieList } from '../movie-list/movie-list';
 import { SlicePipe, UpperCasePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   imports: [
     UpperCasePipe,
-    SlicePipe
-  ],
+    SlicePipe,
+    RouterLink
+],
   selector: 'app-movie-card-2',
   styleUrl: './movie-card-2.css',
   templateUrl: './movie-card-2.html',

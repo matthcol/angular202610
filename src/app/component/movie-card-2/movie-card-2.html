@@ -2,11 +2,14 @@
     @let durationHour = ((movie().duration ?? 0) - ((movie().duration ?? 0) % 60)) / 60;
     @let durationMinute = (movie().duration ?? 0) % 60;
 
-    @if (movie()?.posterUrl) {
+    <a [routerLink]="['/movies', movie().id]">
+        @if (movie()?.posterUrl) {
     <img class="movie-card__poster" [src]="movie().posterUrl" [alt]="movie().title" />
     } @else {
         <img class="movie-card__poster" src="poster-default.svg" [alt]="movie().title" />
     }
+    </a>
+    
     <div class="movie-card__body">
         <div class="movie-card__title">{{ movie().title | slice: 0:10 | uppercase }}</div>
         <div class="movie-card__meta">{{ movie().year }} &middot; {{ movie().duration ?? 'NA'}} mn</div>

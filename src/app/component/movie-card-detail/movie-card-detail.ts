@@ -1,13 +1,22 @@
-import { Component, computed, input, output, signal } from '@angular/core';
+import { Component, computed, inject, input, output, signal } from '@angular/core';
 import { Movie } from '../../model/movie';
 import { DatePipe, DecimalPipe, JsonPipe, LowerCasePipe, PercentPipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { HourMinutePipePipe } from '../../pipe/hour-minute-pipe-pipe';
 import { DatetimeDmyPipe } from '../../pipe/datetime-dmy-pipe';
+import { RouterLink } from '@angular/router';
+import { MovieMock } from '../../service/movie-mock';
 
 type HourMinute = {
   hour: number
   minute: number
 }
+
+const MOVIE_404: Movie = {
+    id: "000",
+    title: "404: Unknown in the unknown",
+    year: 1900,
+    duration: 500
+  }
 
 @Component({
   imports: [
@@ -20,8 +29,8 @@ type HourMinute = {
     PercentPipe,
     DecimalPipe,
     HourMinutePipePipe,
-    DatetimeDmyPipe
-  ],
+    DatetimeDmyPipe,
+],
   selector: 'app-movie-card-detail',
   styleUrl: './movie-card-detail.css',
   templateUrl: './movie-card-detail.html',
@@ -29,13 +38,14 @@ type HourMinute = {
 export class MovieCardDetail {
   displayMode = signal<boolean>(true)
 
-  movie = input<Movie>({
-    id: "000",
-    title: "Unknown in the unknown",
-    year: 1900,
-    duration: 500
-  })  // donnée issue du parent (ou valeur par défaut)
+  movieService  = inject(MovieMock)
 
+  // input id provient du routing pas de l'instanciation html
+  // settings required dans appConfig: withComponentInputBinding()
+  id = input.required<string>()  
+
+  movie = computed(() => this.movieService.getMovie(this.id()) ?? MOVIE_404)
+    
   now = new Date()
 
   movieRemoved = output<void>()

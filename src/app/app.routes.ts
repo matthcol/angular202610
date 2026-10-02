@@ -5,13 +5,19 @@ export const routes: Routes = [
     // static routes
     { path: '', component: Home, title: 'Home' },
     { 
+        path: 'movies-mock', 
+        loadComponent: () => import('./component/movie-list-mock/movie-list-mock')
+            .then(m => m.MovieListMock),
+        title: 'Movies (mock service)' 
+    },
+    { 
         path: 'movies', 
         loadComponent: () => import('./component/movie-list/movie-list')
             .then(m => m.MovieList),
         title: 'Movies' 
     },
     {
-        path: 'movies/:id',
+        path: 'movies/:id',  // :id doit matcher le nom de l'input de MovieCardDetail qui le recupere
         loadComponent: () => import('./component/movie-card-detail/movie-card-detail')
             .then(m => m.MovieCardDetail)
     },
