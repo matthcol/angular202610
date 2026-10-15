@@ -5,6 +5,12 @@ export const routes: Routes = [
     // static routes
     { path: '', component: Home, title: 'Home' },
     { 
+        path: 'movies-api', 
+        loadComponent: () => import('./component/movie-list-api/movie-list-api')
+            .then(m => m.MovieListApi),
+        title: 'Movies (api service)' 
+    },
+    { 
         path: 'movies-mock', 
         loadComponent: () => import('./component/movie-list-mock/movie-list-mock')
             .then(m => m.MovieListMock),

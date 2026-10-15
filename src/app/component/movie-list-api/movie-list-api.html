@@ -1,0 +1,11 @@
+<h2>Movie List (using API)</h2>
+<div>
+<div>Total pages : {{ movieApiService.totalPages() }}</div>
+<div>Nombre de films : {{ movieApiService.totalMovies() }} </div>
+</div>
+
+<div class="movie-grid">
+@for (movie of movieApiService.moviePageData(); track movie.id) {
+    <app-movie-card-2 [movie]="movie " />
+}
+</div>

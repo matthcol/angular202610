@@ -2,6 +2,8 @@ import { Component, model } from '@angular/core';
 import { Movie } from '../../model/movie';
 import { form, min, minLength, required, schema, FormRoot, FormField } from '@angular/forms/signals';
 
+// Guide : https://angular.dev/guide/forms/signals/validation
+
 @Component({
   imports: [FormRoot, FormField],
   selector: 'app-movie-form-signal',
