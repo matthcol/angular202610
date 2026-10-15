@@ -52,6 +52,7 @@ export class MovieCardDetail {
   id = input.required<string>()  
 
   // movie from service (the one displayed)
+
   movie = computed(() => this.movieService.getMovie(this.id()) ?? MOVIE_404)
 
   movieDraftTemplate = linkedSignal(() => ({...this.movie()}))  // writable

@@ -1,11 +1,21 @@
 <h2>Movie List (using API)</h2>
-<div>
-<div>Total pages : {{ movieApiService.totalPages() }}</div>
-<div>Nombre de films : {{ movieApiService.totalMovies() }} </div>
-</div>
 
-<div class="movie-grid">
-@for (movie of movieApiService.moviePageData(); track movie.id) {
-    <app-movie-card-2 [movie]="movie " />
+@if (movieApiService.isLoading()) {
+    <div>
+        Films en cours de chargement ...
+    </div>
 }
-</div>
+@else {
+    <div>
+        <div>Total pages : {{ movieApiService.totalPages() }}</div>
+        <div>Nombre de films : {{ movieApiService.totalMovies() }} </div>
+    </div>
+    <div class="pagination">
+        <button (click)="nextPage()" [disabled]="movieApiService.moviePage().next == null">Next</button>
+    </div>
+    <div class="movie-grid">
+    @for (movie of movieApiService.moviePageData(); track movie.id) {
+        <app-movie-card-2 [movie]="movie" (movieEdited)="movieEdited($event)" />
+    }
+    </div>
+}
