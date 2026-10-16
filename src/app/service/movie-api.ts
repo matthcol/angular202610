@@ -5,24 +5,6 @@ import { MovieQueryParam } from '../model/movie-query-param';
 import { environment } from '../../environments/environment';
 import { Movie } from '../model/movie';
 
-
-// note : page
-// <
-//   "first": 1,
-//   "prev": 4,
-//   "next": 6,
-//   "last": 30,
-//   "pages": 30,
-//   "items": 300,
-//   "data": [
-//     {
-//       "id": "9966",
-//       "title": "Broken Ocean: The Awakening",
-//       "year": 1963,
-//       "duration": 148,
-//       "posterUrl": "https://picsum.photos/seed/movie-9966/300/450"
-//     },
-
 const API_URL = `${environment.apiUrl}/movies`
 
 const DEFAULT_QUERY_PARAM: MovieQueryParam = {
