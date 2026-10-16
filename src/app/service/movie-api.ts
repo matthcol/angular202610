@@ -67,15 +67,36 @@ export class MovieApi {
         }
     ) 
 
+    // query params helpers
+    setQuery(queryParams: Partial<MovieQueryParam>){
+        this.queryParams.update(prevQueryParam => ({ ...prevQueryParam, ...queryParams}))
+    }
+
+    nextPage(){
+        if (this.hasNextPage()) this.setQuery({page: this.currentPage() +1})
+    }
+
+    prevPage(){
+        if (this.hasPrevPage()) this.setQuery({page: this.currentPage() -1})
+    }
+
+    goPage(page: number){
+        if ((page >= 1) && (page <= this.totalPages())) this.setQuery({page})
+    }
+
+    // query params shortcut
+    currentPage = computed(() => this.queryParams().page)
+    pageSize = computed(() => this.queryParams().pageSize)
 
     // page response en entier
     moviePage = computed(() =>  this.pageResource.value())  // ou + simplement  = this.pageResource.value
 
-    // decomposition de la response en plusieurs valeurs computed
+    // decomposition de la page reponse en plusieurs valeurs computed
     moviePageData = computed(() => this.pageResource.value().data)
-
     totalPages = computed(() => this.pageResource.value().pages)
     totalMovies = computed(() => this.pageResource.value().items)
+    hasNextPage = computed(() => this.pageResource.value().next != null)
+    hasPrevPage = computed(() => this.pageResource.value().prev != null)
 
     isLoading = this.pageResource.isLoading // isLoading est signal
 
@@ -83,7 +104,10 @@ export class MovieApi {
     updateMovie(movie: Movie) {
         this.httpClient.put<Movie>(`${API_URL}/${movie.id}`, movie)
             // traiter l'observable: subscribe, pipe, switchMap, ...
+            // TODO: handle errors
             .subscribe(() => this.pageResource.reload())
     }
+
+    // TODO: POST, DELETE
 
 }

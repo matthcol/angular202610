@@ -6,16 +6,53 @@
     </div>
 }
 @else {
-    <div>
-        <div>Total pages : {{ movieApiService.totalPages() }}</div>
+    <div class="page-info">
         <div>Nombre de films : {{ movieApiService.totalMovies() }} </div>
+        <div>Total pages : {{ movieApiService.totalPages() }}</div>
     </div>
     <div class="pagination">
-        <button (click)="nextPage()" [disabled]="movieApiService.moviePage().next == null">Next</button>
+        <button (click)="onPrevPage()" [disabled]="!movieApiService.hasPrevPage()">Prev</button>
+
+        @if (pageNumbers()[0] > 1) {
+            <button (click)="onGoPage(1)">1</button>
+        }
+        @if (pageNumbers()[0] > 2) {
+            <span>…</span>
+        }
+
+        @for (page of pageNumbers(); track page) {
+            <button (click)="onGoPage(page)" [disabled]="page === movieApiService.currentPage()">{{ page }}</button>
+        }
+
+        @if (pageNumbers()[pageNumbers().length - 1] < movieApiService.totalPages() - 1) {
+            <span>…</span>
+        }
+        @if (pageNumbers()[pageNumbers().length - 1] < movieApiService.totalPages()) {
+            <button (click)="onGoPage(movieApiService.totalPages())">{{ movieApiService.totalPages() }}</button>
+        }
+
+        <button (click)="onNextPage()" [disabled]="!movieApiService.hasNextPage()">Next</button>
+
+        <label>
+            Taille de page :
+            <select [value]="movieApiService.pageSize()" (change)="onPageSizeChange($event)">
+                @for (size of pageSizeOptions; track size) {
+                    <option [value]="size">{{ size }}</option>
+                }
+            </select>
+        </label>
     </div>
     <div class="movie-grid">
     @for (movie of movieApiService.moviePageData(); track movie.id) {
-        <app-movie-card-2 [movie]="movie" (movieEdited)="movieEdited($event)" />
+        <app-movie-card-2
+                [movie]="movie"
+                (movieEdited)="onMovieEdited($event)"
+                (movieRemoved)="onMovieRemoved(movie.id)"
+
+                [appOutputEdition]="movie"
+                (appOutputEditionEdited)="onDemoEdited($event)"
+                (appOutputEditionRem)="onDemoRemoved(movie)"
+        />
     }
     </div>
 }

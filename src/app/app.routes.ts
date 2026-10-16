@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { Home } from './component/home/home';
+import { randomGuardGuard } from './guard/random-guard-guard';
 
 export const routes: Routes = [
     // static routes
@@ -41,6 +42,7 @@ export const routes: Routes = [
     },
     { 
         path: 'counter-2', 
+        canActivate: [randomGuardGuard],
         loadComponent: () => import('./component/counter-2/counter-2')
             .then(m => m.Counter2),
         title: 'Counter 2' 
