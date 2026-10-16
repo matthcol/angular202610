@@ -40,11 +40,17 @@ export const routes: Routes = [
             .then(m => m.Counter1),
         title: 'Counter 1' 
     },
-    { 
-        path: 'counter-2', 
+    {
+        path: 'counter-2',
         canActivate: [randomGuardGuard],
         loadComponent: () => import('./component/counter-2/counter-2')
             .then(m => m.Counter2),
-        title: 'Counter 2' 
+        title: 'Counter 2'
+    },
+    {
+        path: 'counter-unavailable',
+        loadComponent: () => import('./component/counter-unavailable/counter-unavailable')
+            .then(m => m.CounterUnavailable),
+        title: 'Counter 2 (indisponible)'
     },
 ];

@@ -10,6 +10,7 @@
                 <div class="movie-card__title">{{ movie().title }}</div>
                 <div class="movie-card__title">{{ movie().title | uppercase }}</div>
                 <div class="movie-card__title">{{ movie().title | lowercase }}</div>
+                <div class="movie-card__title">{{ movie().title | titlecase }}</div>
                 <div class="movie-card__title">{{ movie().title | slice: 0:10 | uppercase }}</div>
                 <div class="movie-card__meta">{{ movie().year }} &middot; {{ movie().duration ?? 'NA'}} mn</div>
                 <div class="movie-card__meta">Duration: {{ movie().duration | hourMinutePipe }}</div>
@@ -29,6 +30,7 @@
                     <div class="movie-card__meta">Last updated: {{ now | datetimeDmy }}</div>
                     <div class="movie-card__meta">Valid until: {{ '2027-02-28' | date: 'dd/MM/yyyy'}}</div>
                 }
+                <div class="movie-card__meta">Movie (json): <pre>{{ movie() | json }}</pre></div>
             </div>
 
             <div>

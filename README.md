@@ -164,6 +164,25 @@ GET http://localhost:3000/movies?_sort=-year
 GET http://localhost:3000/movies?_page=5&_per_page=10
 ```
 
+## Tests
+- Vitest
+- Playwright
+
+```
+ng test
+```
+
+En ciblant (sans autoreplay)
+```
+ng test --watch=false --include='**/movie-api.spec.ts'
+```
+
+Note: vi.waitFor a un timeout et un interval par défaut (resp 1000ms et 50ms). Au delà du timeout, le test échoue. On peut l'ajuster:
+```
+vi.waitFor(cb, { timeout: 2000 })
+```
+
+
 ## Résumé ng generate
 | Schematic | Commande longue | Raccourci consacré | Exemple |
 |---|---|---|---|
@@ -214,4 +233,18 @@ movie = computed(() => this.movieService.getMovie(this.id()) ?? MOVIE_404)
 movieDraftTemplate = linkedSignal(() => ({...this.movie()}))
 ```
 `movie` n'est jamais modifiable directement. `movieDraftTemplate` peut être édité (formulaire), mais se réinitialise automatiquement si `movie()` change (ex: navigation vers un autre film), écrasant le brouillon en cours.
+
+## Pourquoi 11 tests échouaient (récap)
+
+Les tests `should create` générés par `ng generate` sont des coquilles minimales : elles ne fournissent ni le contexte d'injection, ni les inputs/models requis que le composant a gagnés depuis. Dès qu'un composant utilise une donnée "obligatoire" ou un service externe, sa coquille de test doit être complétée en conséquence.
+
+| Cause | Symptôme | Fichiers concernés | Fix |
+|---|---|---|---|
+| `RouterLink` sans routeur en test | `NG0201: No provider for ActivatedRoute` | app, navigate, movie-list, movie-list-mock, movie-list-api | ajouter `provideRouter([])` au `TestBed` |
+| `input.required()` / `model.required()` jamais renseigné | `NG0950`/`NG0952: required but no value` | movie-card-detail (`id`), movie-form-template/reactive/signal (`movie`) | `fixture.componentRef.setInput(...)` avant `whenStable()` |
+| Directive instanciée avec `new` au lieu de `TestBed` | `NG0203: inputFunction() can only be used within an injection context` | output-edition | créer la directive via un composant hôte + `TestBed`, pas `new OutputEdition()` |
+| `httpResource` jamais flush dans le test | Hook timeout (requête HTTP jamais résolue) | movie-list-api | récupérer la requête via `HttpTestingController` et la `flush()` |
+| Dépendance injectée directement (`inject(DatePipe)`) sans provider en test | `NG0201: No provider for DatePipe` | movie-card-detail | ajouter `providers: [DatePipe]` (fourni par `app.config.ts` en vrai) |
+| Locale `fr` jamais enregistrée hors de `app.config.ts` | `NG0701: Missing locale data for the locale "fr"` | movie-card-detail | appeler `registerLocaleData(localeFr)` dans le spec |
+| Test scaffold obsolète (cherchait un `<h1>` qui n'existe plus) | `textContent` undefined → assertion invalide | app | adapter l'assertion au template réel (`app-navigate`) |
 
